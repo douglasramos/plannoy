@@ -14,7 +14,7 @@ namespace Plannoy.Domain
 
         Task<TEntity> GetAsync(long id);
 
-        Task AddAsync(TEntity entity);
+        Task<long> AddAsync(TEntity entity);
 
         Task RemoveAsync(TEntity entity);
     }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Plannoy.Domain
 {
-    public class Establishment: Entity
+    public class Establishment : Entity
     {
         public Establishment(string name, string sector)
         {
@@ -16,11 +16,10 @@ namespace Plannoy.Domain
         /// <summary>
         /// Name of establishment
         /// </summary>
-
         public string Name { get; set; }
 
         /// <summary>
-        /// Sector of aestablishment. Could be Alimentation, Enterteinment, etc. it should be enum?
+        /// Sector of establishment. Could be Alimentation, Entertainment, etc. it should be enum?
         /// </summary>
         public string Sector { get; set; }
     }

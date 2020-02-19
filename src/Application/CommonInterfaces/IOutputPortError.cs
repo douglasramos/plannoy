@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plannoy.Domain
+namespace Plannoy.Application.CommonInterfaces
 {
     /// <summary>
     /// Error Output Port.
