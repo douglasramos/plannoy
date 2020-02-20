@@ -17,5 +17,10 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <AssemblyName>Plannoy.WebApi</AssemblyName>
+    <RootNamespace>Plannoy.WebApi</RootNamespace>
+    <Authors>Douglas Ramos</Authors>
+    <Company>Plannoy</Company>
+    <Product>Plannoy</Product>
   </PropertyGroup>
 </Project>

@@ -1,6 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Plannoy.Domain</AssemblyName>
     <RootNamespace>Plannoy.Domain</RootNamespace>
+    <Authors>Douglas Ramos</Authors>
+    <Company>Plannoy</Company>
   </PropertyGroup>
 </Project>

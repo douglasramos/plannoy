@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Plannoy.Persistance</AssemblyName>
+    <RootNamespace>Plannoy.Persistance</RootNamespace>
+    <Authors>Douglas Ramos</Authors>
+    <Company>Plannoy</Company>
+    <Product>Plannoy</Product>
   </PropertyGroup>
 
   <ItemGroup>
