@@ -24,6 +24,12 @@ namespace Persistance.Configuration
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
+            builder.Property(t => t.PaymentMethod)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (TransactionPaymentMethod)Enum.Parse(typeof(TransactionPaymentMethod), v));
+
+
             builder.OwnsOne(t => t.Money, m =>
             {
                 m.Property(m => m.Value)

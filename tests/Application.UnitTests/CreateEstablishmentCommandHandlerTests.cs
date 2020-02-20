@@ -22,7 +22,7 @@ namespace Plannoy.Application.UnitTests
                 establishmentRepo.AddAsync(Arg.Any<Establishment>()).Returns(id);
 
                 var outputPort = Substitute.For<ICreateEstablishmentOutputPort>();
-                var command = new CreateEstablishmentCommand { Name= "Uspao", Sector= "Alimentos"};
+                var command = new CreateEstablishmentCommand { Name = "Uspao", Sector = "Alimentos" };
 
                 var mapper = Substitute.For<IMapper>();
                 mapper.Map<Establishment>(command).Returns(new Establishment(name: "Uspao", sector: "Alimentos"));
