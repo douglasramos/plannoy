@@ -18,7 +18,7 @@ namespace Plannoy.WebApi.Presenters
 
         public void Success(CreateEstablishmentResponse response)
         {
-            Response = new CreatedAtActionResult("GetById", "Establishments", new { id = response.Id } , response.Id);
+            Response = new CreatedAtActionResult("GetById", "Establishments", new { id = response.Id } , null);
         }
     }
 }

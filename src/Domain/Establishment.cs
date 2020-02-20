@@ -22,5 +22,11 @@ namespace Plannoy.Domain
         /// Sector of establishment. Could be Alimentation, Entertainment, etc. it should be enum?
         /// </summary>
         public string Sector { get; set; }
+
+        /// <summary>
+        /// Transactions associated with this establishment.
+        /// </summary>
+        /// <value></value>
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }

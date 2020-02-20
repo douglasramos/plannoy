@@ -37,7 +37,7 @@ Plannoy src
 ├── WebApi                    # endpoints for the rest api
 ├── Application               # UseCases project.
 ├── Domain                    # Module with all the business logic, entity (domain) models and its services
-├── Infrastructure            # All persistance related stuff goes here.
+├── Persistance               # All persistance related stuff goes here.
 
 Plannoy tests
 ├── WebApi.IntegrationTests   # Integrations tests using a client that makes real calls to the rest api
@@ -61,5 +61,6 @@ Plannoy tests
 - Test Driven Development
 - Domain Driven Design
 - CQRS
+- Inversion of Control
 - Mediator Pattern
 - Repository and Unit of Work Pattern
