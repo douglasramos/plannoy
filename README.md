@@ -6,22 +6,24 @@ The App consist in generate a report on a given Race. The data input is a templa
 
 ## Using The App
 
-The Plannoy App is deployed on the cloud. You can access the app on the following links
+The Plannoy Api is deployed on the cloud. You can access the api on the following link:
 
-- App Api (Azure): <https://plannoy.azurewebsites.net/api/v1/transactions/>
+- App Api (Azure): <https://plannoy.azurewebsites.net/>
 
-### Post Transaction API (API de lançamento)
+The api root presents the swagger documentation. You can use currently 3 endpoints:
 
-### Get Transaction API (API de extrato)
+- Post Transaction API (API de lançamento)
+- Get Transaction API (API de extrato)
+- Establishment API (API de estabelecimento)
 
-### Establishment API (API de estabelecimento)
+We believe that the swagger documentation is self-explanatory to the user be able to interact with the api. Therefore we won't discuss details on how to do this in this document.
 
 ## Running The App on local environment
 
 The Web Api (Backend) for the applications was made wih C#/ASP.NET Core. To publish the api locally run the following command on the root folder:
 
 ```bash
-dotnet run --project WebApi
+dotnet run --project src/WebApi
 ```
 
 You can test the endpoints using a rest API software of your choice or even via console through the **curl**. Example:
@@ -64,3 +66,19 @@ Plannoy tests
 - Inversion of Control
 - Mediator Pattern
 - Repository and Unit of Work Pattern
+
+## Improvements (To be done)
+
+### New Features
+
+- Users (Authentication and Authorization)
+
+### Scalability
+
+- Load Balancer with multiple api server instances
+- Two Databases. One for each domain boundary (Establishments and Transactions)
+
+### Code Design
+
+- Domain Events
+- Code refactoring to generalize CRUD Logic operation
