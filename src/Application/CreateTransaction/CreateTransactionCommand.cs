@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Plannoy.Application.CommonInterfaces;
+using Plannoy.Domain;
 
 namespace Plannoy.Application.CreateTransaction
 {
@@ -11,20 +12,24 @@ namespace Plannoy.Application.CreateTransaction
         {
         }
 
-        //public CreateEstablishmentCommand(string name, string sector)
-        //{
-        //    Name = name;
-        //    Sector = sector;
-        //}
+        /// <summary>
+        /// Reference Date
+        /// </summary>
+        public DateTime ReferenceDate { get; set; }
 
         /// <summary>
-        /// Name of establishment
+        /// Payment Method
         /// </summary>
-        public string Name { get; set; }
+        public TransactionPaymentMethod PaymentMethod { get; set; }
 
         /// <summary>
-        /// Sector of establishment. Could be Alimentation, Entertainment, etc. it should be enum?
+        /// Value of the transaction + Currency use in the transaction
         /// </summary>
-        public string Sector { get; set; }
+        public Money Money { get; set; }
+
+        /// <summary>
+        /// Name of the establishment where the transaction occured
+        /// </summary>
+        public string Establishment { get; set; } = null!;
     }
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Plannoy.Application.CreateEstablishment;
+using Plannoy.WebApi;
 using Plannoy.WebApi.Presenters;
 
 namespace WebApi.Controllers
@@ -16,26 +18,37 @@ namespace WebApi.Controllers
     {
         private readonly IMediator _mediator;
         private readonly CreateEstablishmentPresenter _presenter;
+        private readonly IMapper _mapper;
 
-        public EstablishmentsController(IMediator mediator, CreateEstablishmentPresenter presenter)
+        public EstablishmentsController(IMediator mediator, IMapper mapper, CreateEstablishmentPresenter presenter)
         {
-            _presenter = presenter;
             _mediator = mediator;
+            _mapper = mapper;
+            _presenter = presenter;
         }
 
+        /// <summary>
+        /// API de estabelecimentos - Endpoint used to register new establishments
+        /// </summary>
+        /// <param name="request">Establishment information</param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] CreateEstablishmentCommand request)
+        public async Task<ActionResult> Create([FromBody] EstablishmentApiModel request)
         {
-            await _mediator.Send(request);
+            var command = _mapper.Map<CreateEstablishmentCommand>(request);
+
+            await _mediator.Send(command);
 
             return _presenter.Response;
         }
 
+        /// <summary>
+        /// Endpoint used to Get by id a registered establishment
+        /// </summary>
         [HttpGet("{id}")]
-        public ActionResult GetById(int id)
+        public ActionResult Get([FromRoute] long id)
         {
-            //await _mediator.Send(request);
-
+            // Not implemented
             return Ok();
         }
     }

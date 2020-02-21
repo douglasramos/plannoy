@@ -80,5 +80,7 @@ Plannoy tests
 
 ### Code Design
 
-- Domain Events
+- Api Conventions
 - Code refactoring to generalize CRUD Logic operation
+- Fluent Validation instead of DataAnnotations
+- Domain Events

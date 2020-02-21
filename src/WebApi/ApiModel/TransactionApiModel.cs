@@ -1,4 +1,5 @@
 ﻿using Plannoy.Domain;
+using Plannoy.WebApi.Properties.CustomValidations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace Plannoy.WebApi
         /// Reference Date
         /// </summary>
         [Required]
+        [NotFutureDate]
         public DateTime ReferenceDate { get; set; }
 
         /// <summary>
@@ -22,13 +24,13 @@ namespace Plannoy.WebApi
         public TransactionPaymentMethod PaymentMethod { get; set; }
 
         /// <summary>
-        /// Value of the transacation
+        /// Value of the transaction
         /// </summary>
         [Required]
         public decimal Value { get; set; }
 
         /// <summary>
-        /// Currency use in the transacation
+        /// Currency use in the transaction
         /// </summary>
         [Required]
         public Currency Currency { get; set; }

@@ -12,15 +12,19 @@ namespace Plannoy.Application.CreateTransaction
     public class CreateTransactionCommandHandler : ICommandHandler<CreateTransactionCommand>
     {
 
+        private readonly ITransactionRepository _transactions;
+
         private readonly IEstablishmentRepository _establishments;
 
         private readonly ICreateTransactionOutputPort _outputPort;
 
         private readonly IMapper _mapper;
 
-        public CreateTransactionCommandHandler(IEstablishmentRepository establishments, ICreateTransactionOutputPort outputPort,
+        public CreateTransactionCommandHandler(ITransactionRepository transactions, IEstablishmentRepository establishments,
+            ICreateTransactionOutputPort outputPort,
             IMapper mapper)
         {
+            _transactions = transactions;
             _establishments = establishments;
             _outputPort = outputPort;
             _mapper = mapper;
@@ -30,9 +34,15 @@ namespace Plannoy.Application.CreateTransaction
         {
             try
             {
-                var establishment = _mapper.Map<Establishment>(request);
+                var establishment = await _establishments.GetByNameAsync(request.Establishment);
 
-                var id = await _establishments.AddAsync(establishment);
+                var transactions = new Transaction(
+                    request.ReferenceDate,
+                    establishment,
+                    request.PaymentMethod,
+                    request.Money);
+
+                var id = await _transactions.AddAsync(transactions);
 
                 _outputPort.Success(new CreateTransactionResponse { Id = id });
                 return true;

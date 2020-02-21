@@ -7,8 +7,14 @@ namespace Plannoy.Domain
 {
     public class Transaction : Entity
     {
-        public Transaction()
+        private Transaction() { }
+
+        public Transaction(DateTime referenceDate, Establishment establishment, TransactionPaymentMethod paymentMethod, Money money)
         {
+            ReferenceDate = referenceDate;
+            Establishment = establishment;
+            PaymentMethod = paymentMethod;
+            Money = money;
         }
 
         /// <summary>
@@ -19,10 +25,10 @@ namespace Plannoy.Domain
         /// <summary>
         /// Establishment on which the transaction was made
         /// </summary>
-        public Establishment Establishment { get; set; }
+        public Establishment Establishment { get; set; } = null!;
 
         public TransactionPaymentMethod PaymentMethod { get; set; }
 
-        public Money Money { get; set; }
+        public Money Money { get; set; } = null!;
     }
 }

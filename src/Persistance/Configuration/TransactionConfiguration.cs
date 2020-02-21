@@ -25,6 +25,7 @@ namespace Persistance.Configuration
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
             builder.Property(t => t.PaymentMethod)
+                .IsRequired()
                 .HasConversion(
                     v => v.ToString(),
                     v => (TransactionPaymentMethod)Enum.Parse(typeof(TransactionPaymentMethod), v));
@@ -38,6 +39,9 @@ namespace Persistance.Configuration
 
                 m.Property(m => m.Currency)
                 .HasColumnName("MoneyCurrency")
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (Currency)Enum.Parse(typeof(Currency), v))
                 .IsRequired()
                 .HasMaxLength(3);
             });

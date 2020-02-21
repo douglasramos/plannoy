@@ -12,7 +12,7 @@ namespace Plannoy.Domain
 
         Task<IQueryable<TEntity>> GetQueryableAsync();
 
-        Task<TEntity> GetAsync(long id);
+        Task<TEntity> GetByIdAsync(long id);
 
         Task<long> AddAsync(TEntity entity);
 

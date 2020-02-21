@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Plannoy.Application.CreateEstablishment;
+using Plannoy.Application.CreateTransaction;
 using Plannoy.Domain;
 using Plannoy.WebApi;
 using System;
@@ -9,15 +10,13 @@ using System.Threading.Tasks;
 
 namespace WebApi.Mappings
 {
-    public class EstablishmentProfile: Profile
+    public class TransactionProfile : Profile
     {
-        public EstablishmentProfile()
+        public TransactionProfile()
         {
             // API -> App
-            CreateMap<EstablishmentApiModel, CreateEstablishmentCommand>();
-
-            // App -> Domain
-            CreateMap<CreateEstablishmentCommand, Establishment>();
+            CreateMap<TransactionApiModel, CreateTransactionCommand>()
+                .ForMember(d => d.Money, opt => opt.MapFrom(s => new Money(s.Value, s.Currency)));
         }
     }
 }

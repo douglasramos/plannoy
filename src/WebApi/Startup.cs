@@ -40,6 +40,8 @@ namespace Plannoy.WebApi
         {
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddRouting(options => options.LowercaseUrls = true);
+
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -62,6 +64,8 @@ namespace Plannoy.WebApi
             services.AddDbContext<PlannoyDbContext>(options => options.UseSqlite(@"Data Source=C:\Users\Douglas\Desktop\dbplannoy\plannoy.db"));
 
             services.AddScoped<IEstablishmentRepository, EstablishmentRepository>();
+
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             services.AddScoped<CreateEstablishmentPresenter>();
             services.AddScoped<ICreateEstablishmentOutputPort>(c =>

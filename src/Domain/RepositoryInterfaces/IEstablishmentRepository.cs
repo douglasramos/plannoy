@@ -8,5 +8,6 @@ namespace Plannoy.Domain
 {
     public interface IEstablishmentRepository : IRepository<Establishment>
     {
+        Task<Establishment> GetByNameAsync(string name);
     }
 }
