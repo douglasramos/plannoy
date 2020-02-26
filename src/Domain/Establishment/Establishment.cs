@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Plannoy.Domain
+namespace Plannoy.Domain.Establishment
 {
     public class Establishment : Entity
     {
@@ -27,6 +27,6 @@ namespace Plannoy.Domain
         /// Transactions associated with this establishment.
         /// </summary>
         /// <value></value>
-        public ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Transaction>? Transactions { get; set; }
     }
 }

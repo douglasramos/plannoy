@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Plannoy.Domain;
-using Plannoy.Persistance;
-using System;
-using System.Collections.Generic;
+using Plannoy.Domain.Establishment;
+using Plannoy.Domain.RepositoryInterfaces;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Plannoy.Persistance
+namespace Plannoy.Persistance.Repositories
 {
     public class EstablishmentRepository : Repository<Establishment>, IEstablishmentRepository
     {
@@ -31,7 +29,6 @@ namespace Plannoy.Persistance
             }
 
             return establishment;
-
         }
     }
 }

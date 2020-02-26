@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Plannoy.Application.CreateEstablishment;
 using Plannoy.WebApi;
+using Plannoy.WebApi.ApiModel;
 using Plannoy.WebApi.Presenters;
 
 namespace WebApi.Controllers
@@ -31,25 +32,15 @@ namespace WebApi.Controllers
         /// API de estabelecimentos - Endpoint used to register new establishments
         /// </summary>
         /// <param name="request">Establishment information</param>
-        /// <returns></returns>
+        /// <returns>Establishment created</returns>
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] EstablishmentApiModel request)
+        public async Task<ActionResult<EstablishmentApiModel>> Create([FromBody] CreateEstablishmentApiModel request)
         {
             var command = _mapper.Map<CreateEstablishmentCommand>(request);
 
             await _mediator.Send(command);
 
             return _presenter.Response;
-        }
-
-        /// <summary>
-        /// Endpoint used to Get by id a registered establishment
-        /// </summary>
-        [HttpGet("{id}")]
-        public ActionResult Get([FromRoute] long id)
-        {
-            // Not implemented
-            return Ok();
         }
     }
 }

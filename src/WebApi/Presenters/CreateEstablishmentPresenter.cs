@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.CreateEstablishment;
 using Plannoy.Domain;
+using Plannoy.Domain.Establishment;
+using Plannoy.WebApi.ApiModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +13,14 @@ namespace Plannoy.WebApi.Presenters
 {
     public class CreateEstablishmentPresenter : ICreateEstablishmentOutputPort
     {
-        public ActionResult Response { get; set; } = null!;
+        private readonly IMapper _mapper; 
+
+        public ActionResult<EstablishmentApiModel> Response { get; set; } = null!;
+
+        public CreateEstablishmentPresenter(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
         public void Error(Exception exception)
         {
@@ -19,7 +29,7 @@ namespace Plannoy.WebApi.Presenters
 
         public void Success(Establishment response)
         {
-            Response = new CreatedResult("", response);
+            Response = new CreatedResult("", _mapper.Map<EstablishmentApiModel>(response));
         }
     }
 }

@@ -2,9 +2,9 @@
 using MediatR;
 using Plannoy.Application.CommonInterfaces;
 using Plannoy.Domain;
+using Plannoy.Domain.Establishment;
+using Plannoy.Domain.RepositoryInterfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,11 +12,8 @@ namespace Plannoy.Application.CreateEstablishment
 {
     public class CreateEstablishmentCommandHandler : ICommandHandler<CreateEstablishmentCommand>
     {
-
         private readonly IEstablishmentRepository _establishments;
-
         private readonly ICreateEstablishmentOutputPort _outputPort;
-
         private readonly IMapper _mapper;
 
         public CreateEstablishmentCommandHandler(IEstablishmentRepository establishments, ICreateEstablishmentOutputPort outputPort,

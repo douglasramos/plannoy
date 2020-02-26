@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.CreateTransaction;
 using Plannoy.Domain;
+using Plannoy.WebApi.ApiModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

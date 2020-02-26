@@ -1,20 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Plannoy.Domain;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using Plannoy.Domain.Establishment;
 
 namespace Persistance.Configuration
 {
     /// <summary>
-    ///     Establishment Configuration.
+    /// Establishment Configuration
     /// </summary>
     public class EstablishmentConfiguration : IEntityTypeConfiguration<Establishment>
     {
         /// <summary>
-        ///     Configure Establihment.
+        /// Configure Establishment
         /// </summary>
         public void Configure(EntityTypeBuilder<Establishment> builder)
         {

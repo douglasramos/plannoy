@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Plannoy.Domain;
+using Plannoy.Domain.RepositoryInterfaces;
 
 namespace Plannoy.Persistance
 {
@@ -23,11 +24,6 @@ namespace Plannoy.Persistance
             return entityEntry.Entity;
         }
 
-        public virtual Task<IEnumerable<TEntity>> GetAllAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public virtual async Task<TEntity> GetByIdAsync(long id)
         {
             return await _dbContext.Set<TEntity>().Where(e => e.Id == id).FirstOrDefaultAsync();
@@ -39,6 +35,11 @@ namespace Plannoy.Persistance
         }
 
         public virtual Task RemoveAsync(TEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual Task<IEnumerable<TEntity>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }

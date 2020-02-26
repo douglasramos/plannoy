@@ -11,6 +11,7 @@ using Plannoy.Application.CreateTransaction;
 using Plannoy.Application.GetTransactionById;
 using Plannoy.Application.GetTransactionsByFilter;
 using Plannoy.Domain;
+using Plannoy.WebApi.ApiModel;
 using Plannoy.WebApi.Presenters;
 
 namespace Plannoy.WebApi.Controllers
@@ -41,6 +42,7 @@ namespace Plannoy.WebApi.Controllers
         /// <summary>
         /// API de Extrato. Endpoints for fetching transactions bases on date filters
         /// </summary>
+        /// <param name="presenter"></param>
         /// <param name="filter">filter for fetching transactions</param>
         /// <returns>isso eh um retorno</returns>
         [HttpGet]

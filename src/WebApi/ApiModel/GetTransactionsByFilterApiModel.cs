@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plannoy.WebApi
+namespace Plannoy.WebApi.ApiModel
 {
     public class GetTransactionsByFilterApiModel
     {

@@ -7,21 +7,18 @@ using System.Threading.Tasks;
 
 namespace Plannoy.WebApi.ApiModel
 {
-    public class EstablishmentApiModel
+    public class CreateEstablishmentApiModel
     {
-        /// <summary>
-        /// Establishment's Id
-        /// </summary>
-        public string Id { get; set; } = null!;
-
         /// <summary>
         /// Establishment's name
         /// </summary>
+        [Required]
         public string Name { get; set; } = null!;
 
         /// <summary>
         /// Establishment's sector
         /// </summary>
+        [Required]
         public string Sector { get; set; } = null!;
     }
 }

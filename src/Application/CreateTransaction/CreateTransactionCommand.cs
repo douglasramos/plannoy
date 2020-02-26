@@ -8,8 +8,13 @@ namespace Plannoy.Application.CreateTransaction
 {
     public class CreateTransactionCommand : ICommand
     {
-        public CreateTransactionCommand()
+
+        public CreateTransactionCommand(DateTime referenceDate, TransactionPaymentMethod paymentMethod, Money money, string establishment)
         {
+            ReferenceDate = referenceDate;
+            PaymentMethod = paymentMethod;
+            Money = money;
+            Establishment = establishment;
         }
 
         /// <summary>

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Plannoy.Domain
+namespace Plannoy.Domain.RepositoryInterfaces
 {
-    public interface IEstablishmentRepository : IRepository<Establishment>
+    public interface IEstablishmentRepository : IRepository<Establishment.Establishment>
     {
-        Task<Establishment> GetByNameAsync(string name);
+        Task<Establishment.Establishment> GetByNameAsync(string name);
     }
 }

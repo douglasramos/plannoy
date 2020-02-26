@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Plannoy.Domain
 {
@@ -9,7 +6,7 @@ namespace Plannoy.Domain
     {
         private Transaction() { }
 
-        public Transaction(DateTime referenceDate, Establishment establishment, TransactionPaymentMethod paymentMethod, Money money)
+        public Transaction(DateTime referenceDate, Establishment.Establishment establishment, TransactionPaymentMethod paymentMethod, Money money)
         {
             ReferenceDate = referenceDate;
             Establishment = establishment;
@@ -25,7 +22,7 @@ namespace Plannoy.Domain
         /// <summary>
         /// Establishment on which the transaction was made
         /// </summary>
-        public Establishment Establishment { get; set; } = null!;
+        public Establishment.Establishment Establishment { get; set; } = null!;
 
         public TransactionPaymentMethod PaymentMethod { get; set; }
 

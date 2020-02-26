@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Plannoy.Application.CommonInterfaces;
 using Plannoy.Domain;
+using Plannoy.Domain.RepositoryInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plannoy.Domain
+namespace Plannoy.Domain.RepositoryInterfaces
 {
     public interface IRepository<TEntity> where TEntity: class, IEntity
     {
-        Task<IEnumerable<TEntity>> GetAllAsync();
-
         IQueryable<TEntity> GetQueryable();
+
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
         Task<TEntity> GetByIdAsync(long id);
 

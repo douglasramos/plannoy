@@ -5,7 +5,7 @@ using System.Text;
 namespace Plannoy.Application.CommonInterfaces
 {
     /// <summary>
-    /// Error Output Port.
+    /// Success Output Port.
     /// </summary>
     public interface IOutputPortSuccess<in TUseCaseResponse>
     {

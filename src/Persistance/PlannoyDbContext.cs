@@ -1,23 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Plannoy.Domain;
-using System;
+using Plannoy.Domain.Establishment;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Plannoy.Persistance
 {
     public class PlannoyDbContext: DbContext
     {
+        public DbSet<Establishment> Establishments { get; set; } = null!;
+        public DbSet<Transaction> Transactions { get; set; } = null!;
+
         public PlannoyDbContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<Establishment> Establishments { get; set; } = null!;
-        public DbSet<Transaction> Transactions { get; set; } = null!;
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(PlannoyDbContext).Assembly);
-            //SeedData.Seed(builder);
         }
     }
 }

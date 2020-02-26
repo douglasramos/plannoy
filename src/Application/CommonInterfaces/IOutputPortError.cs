@@ -12,7 +12,7 @@ namespace Plannoy.Application.CommonInterfaces
         /// <summary>
         ///  Informs an error happened.
         /// </summary>
-        /// <param name="message">Text description.</param>
+        /// <param name="exception">Error execeptions</param>
         void Error(Exception exception);
     }
 }

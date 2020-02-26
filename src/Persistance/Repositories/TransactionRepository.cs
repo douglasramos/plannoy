@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Plannoy.Application.GetTransactionsByFilter;
 using Plannoy.Domain;
+using Plannoy.Domain.RepositoryInterfaces;
 using Plannoy.Persistance;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plannoy.Persistance
+namespace Plannoy.Persistance.Repositories
 {
     public class TransactionRepository : Repository<Transaction>, ITransactionRepository
     {
