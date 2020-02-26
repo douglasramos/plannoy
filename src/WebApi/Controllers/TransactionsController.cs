@@ -51,7 +51,7 @@ namespace Plannoy.WebApi.Controllers
         /// </summary>
         /// <param name="presenter"></param>
         /// <param name="filter">filter for fetching transactions</param>
-        /// <returns>isso eh um retorno</returns>
+        /// <returns>transactions list</returns>
         [HttpGet]
         public async Task<ActionResult<List<TransactionApiModel>>> GetByFilter([FromServices] GetTransactionByFilterPresenter presenter,
             [FromQuery] GetTransactionsByFilterApiModel filter)
@@ -66,8 +66,12 @@ namespace Plannoy.WebApi.Controllers
         /// <summary>
         /// Get a transaction given its id
         /// </summary>
+        /// <param name="presenter"></param>
+        /// <param name="id"> transaction's id</param>
+        /// <returns>transaction</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<TransactionApiModel>> GetById([FromServices] GetTransactionByIdPresenter presenter, [FromRoute] long id)
+        public async Task<ActionResult<TransactionApiModel>> GetById([FromServices] GetTransactionByIdPresenter presenter, 
+            [FromRoute] long id)
         {
             var query = new GetTransactionByIdQuery { Id = id };
 
