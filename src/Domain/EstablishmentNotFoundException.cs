@@ -6,7 +6,7 @@ namespace Plannoy.Domain
 {
     public class EstablishmentNotFoundException : Exception
     {
-        public EstablishmentNotFoundException(): base("Establishment Not found. Register this Establishment first, then associate transactions with it")
+        public EstablishmentNotFoundException() : base("Establishment Not found")
         {
         }
     }

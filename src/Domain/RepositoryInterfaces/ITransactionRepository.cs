@@ -8,6 +8,6 @@ namespace Plannoy.Domain
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
-
+        Task<List<Transaction>> GetByFilter(DateTime? initialDate, DateTime? finalDate);
     }
 }

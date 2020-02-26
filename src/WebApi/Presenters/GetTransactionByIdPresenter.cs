@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.CreateTransaction;
+using Plannoy.Application.GetTransactionById;
 using Plannoy.Domain;
 using System;
 using System.Collections.Generic;
@@ -9,27 +11,25 @@ using System.Threading.Tasks;
 
 namespace Plannoy.WebApi.Presenters
 {
-    public class CreateTransactionPresenter : ICreateTransactionOutputPort
+    public class GetTransactionByIdPresenter : IGetTransactionByIdOutputPort
     {
-        public ActionResult Response { get; set; } = null!;
-
         private readonly IMapper _mapper;
 
-        public CreateTransactionPresenter(IMapper mapper)
+        public ActionResult<TransactionApiModel> Response { get; set; } = null!;
+
+        public GetTransactionByIdPresenter(IMapper mapper)
         {
             _mapper = mapper;
         }
 
         public void Error(Exception exception)
         {
-            Response = new BadRequestObjectResult(new { ErrorMessage = exception.Message } );
+            Response = new NotFoundObjectResult(new { ErrorMessage = exception.Message } );
         }
 
         public void Success(Transaction response)
         {
-            var transaction = _mapper.Map<TransactionApiModel>(response);
-
-            Response = new CreatedAtActionResult("GetById", "Transactions", new { id = response.Id } , transaction);
+            Response = new OkObjectResult(_mapper.Map<TransactionApiModel>(response));
         }
     }
 }

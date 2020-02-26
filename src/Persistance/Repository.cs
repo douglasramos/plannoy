@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Plannoy.Domain;
 
 namespace Plannoy.Persistance
@@ -14,12 +15,12 @@ namespace Plannoy.Persistance
             _dbContext = dbContext;
         }
 
-        public virtual async Task<long> AddAsync(TEntity entity)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             var entityEntry = await _dbContext.Set<TEntity>().AddAsync(entity);
 
             await _dbContext.SaveChangesAsync();
-            return entityEntry.Entity.Id!.Value;
+            return entityEntry.Entity;
         }
 
         public virtual Task<IEnumerable<TEntity>> GetAllAsync()
@@ -27,14 +28,14 @@ namespace Plannoy.Persistance
             throw new System.NotImplementedException();
         }
 
-        public virtual Task<TEntity> GetByIdAsync(long id)
+        public virtual async Task<TEntity> GetByIdAsync(long id)
         {
-            throw new System.NotImplementedException();
+            return await _dbContext.Set<TEntity>().Where(e => e.Id == id).FirstOrDefaultAsync();
         }
 
-        public virtual Task<IQueryable<TEntity>> GetQueryableAsync()
+        public virtual IQueryable<TEntity> GetQueryable()
         {
-            throw new System.NotImplementedException();
+            return _dbContext.Set<TEntity>().AsQueryable();
         }
 
         public virtual Task RemoveAsync(TEntity entity)

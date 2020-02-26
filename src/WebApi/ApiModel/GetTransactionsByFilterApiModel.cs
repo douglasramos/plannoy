@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Plannoy.WebApi
 {
-    public class TransactionsFilterApiModel
+    public class GetTransactionsByFilterApiModel
     {
         /// <summary>
         /// Initial Date. If not sended, the api will use the date of the oldest transaction

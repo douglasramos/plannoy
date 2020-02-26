@@ -10,11 +10,11 @@ namespace Plannoy.Domain
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
 
-        Task<IQueryable<TEntity>> GetQueryableAsync();
+        IQueryable<TEntity> GetQueryable();
 
         Task<TEntity> GetByIdAsync(long id);
 
-        Task<long> AddAsync(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
 
         Task RemoveAsync(TEntity entity);
     }

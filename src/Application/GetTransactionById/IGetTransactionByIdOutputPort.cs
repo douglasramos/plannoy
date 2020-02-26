@@ -4,12 +4,12 @@ using System.Text;
 using Plannoy.Application.CommonInterfaces;
 using Plannoy.Domain;
 
-namespace Plannoy.Application.CreateEstablishment
+namespace Plannoy.Application.GetTransactionById
 {
     /// <summary>
     /// Error Output Port.
     /// </summary>
-    public interface ICreateEstablishmentOutputPort : IOutputPortError, IOutputPortSuccess<Establishment>
+    public interface IGetTransactionByIdOutputPort : IOutputPortError, IOutputPortSuccess<Transaction>
     {
     }
 }

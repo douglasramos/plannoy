@@ -36,15 +36,15 @@ namespace Plannoy.Application.CreateTransaction
             {
                 var establishment = await _establishments.GetByNameAsync(request.Establishment);
 
-                var transactions = new Transaction(
+                var transaction = new Transaction(
                     request.ReferenceDate,
                     establishment,
                     request.PaymentMethod,
                     request.Money);
 
-                var id = await _transactions.AddAsync(transactions);
+                var transactionAdded = await _transactions.AddAsync(transaction);
 
-                _outputPort.Success(new CreateTransactionResponse { Id = id });
+                _outputPort.Success(transactionAdded);
                 return true;
             }
             catch (Exception ex)

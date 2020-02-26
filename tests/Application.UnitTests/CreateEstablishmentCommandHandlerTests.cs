@@ -18,14 +18,16 @@ namespace Plannoy.Application.UnitTests
             {
                 // arrange
                 long id = 3;
+                var name = "Uspao";
+                var sector = "Alimentos";
                 var establishmentRepo = Substitute.For<IEstablishmentRepository>();
-                establishmentRepo.AddAsync(Arg.Any<Establishment>()).Returns(id);
+                establishmentRepo.AddAsync(Arg.Any<Establishment>()).Returns(new Establishment(name, sector) { Id = id });
 
                 var outputPort = Substitute.For<ICreateEstablishmentOutputPort>();
-                var command = new CreateEstablishmentCommand { Name = "Uspao", Sector = "Alimentos" };
+                var command = new CreateEstablishmentCommand { Name = name, Sector = sector };
 
                 var mapper = Substitute.For<IMapper>();
-                mapper.Map<Establishment>(command).Returns(new Establishment(name: "Uspao", sector: "Alimentos"));
+                mapper.Map<Establishment>(command).Returns(new Establishment(name: name, sector: sector));
 
 
                 // act
@@ -34,7 +36,7 @@ namespace Plannoy.Application.UnitTests
 
                 // assert
                 Assert.True(success);
-                outputPort.Received().Success(Arg.Is<CreateEstablishmentResponse>(i => i.Id == id));
+                outputPort.Received().Success(Arg.Is<Establishment>(i => i.Id == id));
             }
         }
     }

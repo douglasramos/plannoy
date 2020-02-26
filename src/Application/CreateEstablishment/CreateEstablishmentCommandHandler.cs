@@ -33,9 +33,9 @@ namespace Plannoy.Application.CreateEstablishment
             {
                 var establishment = _mapper.Map<Establishment>(request);
 
-                var id = await _establishments.AddAsync(establishment);
+                var establishmentAdded = await _establishments.AddAsync(establishment);
 
-                _outputPort.Success(new CreateEstablishmentResponse { Id = id });
+                _outputPort.Success(establishmentAdded);
                 return true;
             }
             catch (Exception ex)

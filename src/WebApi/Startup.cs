@@ -20,6 +20,8 @@ using Microsoft.OpenApi.Models;
 using Persistance;
 using Plannoy.Application.CreateEstablishment;
 using Plannoy.Application.CreateTransaction;
+using Plannoy.Application.GetTransactionById;
+using Plannoy.Application.GetTransactionsByFilter;
 using Plannoy.Domain;
 using Plannoy.Persistance;
 using Plannoy.WebApi.Presenters;
@@ -74,6 +76,14 @@ namespace Plannoy.WebApi
             services.AddScoped<CreateTransactionPresenter>();
             services.AddScoped<ICreateTransactionOutputPort>(c =>
                 c.GetRequiredService<CreateTransactionPresenter>());
+
+            services.AddScoped<GetTransactionByIdPresenter>();
+            services.AddScoped<IGetTransactionByIdOutputPort>(c =>
+                c.GetRequiredService<GetTransactionByIdPresenter>());
+
+            services.AddScoped<GetTransactionByFilterPresenter>();
+            services.AddScoped<IGetTransactionsByFilterOutputPort>(c =>
+                c.GetRequiredService<GetTransactionByFilterPresenter>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

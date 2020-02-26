@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.CreateEstablishment;
+using Plannoy.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Plannoy.WebApi.Presenters
             throw new NotImplementedException();
         }
 
-        public void Success(CreateEstablishmentResponse response)
+        public void Success(Establishment response)
         {
-            Response = new CreatedAtActionResult("Get", "Establishments", new { id = response.Id }, null);
+            Response = new CreatedResult("", response);
         }
     }
 }

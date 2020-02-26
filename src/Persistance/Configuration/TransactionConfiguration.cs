@@ -9,7 +9,7 @@ using System.Text;
 namespace Persistance.Configuration
 {
     /// <summary>
-    ///     Establishment Configuration.
+    /// Establishment Configuration.
     /// </summary>
     public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
     {
@@ -23,6 +23,12 @@ namespace Persistance.Configuration
             // TODO centralize this behavior on a base class
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
+
+            builder.Property(t => t.ReferenceDate)
+                .IsRequired()
+                .HasConversion(
+                    v => v,
+                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
 
             builder.Property(t => t.PaymentMethod)
                 .IsRequired()

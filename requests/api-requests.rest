@@ -1,0 +1,32 @@
+###
+GET https://localhost:5002/api/transactions/1
+
+###
+GET https://localhost:5002/api/transactions/?initial-date=2020-02-17&final-date=2020-02-21
+
+###
+POST https://localhost:5002/api/transactions/
+Content-Type: application/json
+
+{
+    "ReferenceDate": "2020-02-18T19:48:06Z",
+    "PaymentMethod": "CreditCard",
+    "Value": 2.89,
+    "Currency": "BRL",
+    "Establishment": "Uspao"
+}
+
+###
+POST https://localhost:5002/api/establishments
+Content-Type: application/json
+
+{
+    "Name": "Uspao",
+    "Sector": "Alimentos"
+}
+
+###
+
+GET https://localhost:5002/api/establishments/1
+
+
