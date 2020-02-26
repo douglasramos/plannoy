@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Plannoy.Application.CreateEstablishment;
 using Plannoy.Application.CreateTransaction;
 using Plannoy.Application.GetTransactionById;
 using Plannoy.Application.GetTransactionsByFilter;
-using Plannoy.Domain;
 using Plannoy.WebApi.ApiModel;
 using Plannoy.WebApi.Presenters;
 
@@ -47,7 +42,7 @@ namespace Plannoy.WebApi.Controllers
         }
 
         /// <summary>
-        /// API de Extrato. Endpoints for fetching transactions bases on date filters
+        /// API de Extrato. Endpoints for fetching transactions based on date filters
         /// </summary>
         /// <param name="presenter"></param>
         /// <param name="filter">filter for fetching transactions</param>

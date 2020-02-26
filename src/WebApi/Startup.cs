@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Plannoy.Application.CreateEstablishment;
 using Plannoy.WebApi.Extensions.WebApi.DependencyInjection;
+using Prometheus;
 
 namespace Plannoy.WebApi
 {
@@ -59,11 +60,14 @@ namespace Plannoy.WebApi
 
             app.UseRouting();
 
+            app.UseHttpMetrics();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }

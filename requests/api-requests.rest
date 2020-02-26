@@ -2,7 +2,7 @@
 GET https://localhost:5002/api/transactions/1
 
 ###
-GET https://localhost:5002/api/transactions/?initial-date=2020-02-17&final-date=2020-02-21
+GET https://localhost:5002/api/transactions/?initial-date=2020-02-20&final-date=2020-02-21
 
 ###
 POST https://localhost:5002/api/transactions/
@@ -26,7 +26,6 @@ Content-Type: application/json
 }
 
 ###
-
 GET https://localhost:5002/api/establishments/1
 
 
