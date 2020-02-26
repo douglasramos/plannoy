@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.GetTransactionsByFilter;
-using Plannoy.Domain;
+using Plannoy.Domain.Transaction;
 using Plannoy.WebApi.ApiModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Plannoy.WebApi.Presenters
 {

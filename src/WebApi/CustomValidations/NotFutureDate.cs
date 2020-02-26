@@ -14,7 +14,7 @@ namespace Plannoy.WebApi.CustomValidations
         }
 
         protected override ValidationResult IsValid(object objValue,
-                                                       ValidationContext validationContext)
+            ValidationContext validationContext)
         {
             var dateValue = objValue as DateTime? ?? new DateTime();
 

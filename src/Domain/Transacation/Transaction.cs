@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Plannoy.Domain
+namespace Plannoy.Domain.Transaction
 {
     public class Transaction : Entity
     {

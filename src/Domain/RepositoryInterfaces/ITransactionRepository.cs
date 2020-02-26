@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Plannoy.Domain.RepositoryInterfaces
 {
-    public interface ITransactionRepository : IRepository<Transaction>
+    public interface ITransactionRepository : IRepository<Transaction.Transaction>
     {
-        Task<List<Transaction>> GetByFilter(DateTime? initialDate, DateTime? finalDate);
+        Task<List<Transaction.Transaction>> GetByFilter(DateTime? initialDate, DateTime? finalDate);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Plannoy.Domain;
 using Plannoy.Domain.Establishment;
+using Plannoy.Domain.Transaction;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Plannoy.Persistance

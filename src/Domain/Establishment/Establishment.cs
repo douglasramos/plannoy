@@ -27,6 +27,6 @@ namespace Plannoy.Domain.Establishment
         /// Transactions associated with this establishment.
         /// </summary>
         /// <value></value>
-        public ICollection<Transaction>? Transactions { get; set; }
+        public ICollection<Transaction.Transaction>? Transactions { get; set; }
     }
 }

@@ -29,8 +29,15 @@ namespace Plannoy.WebApi.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// API de lançamentos - Endpoint for creating new transactions
+        /// </summary>
+        /// <param name="presenter"></param>
+        /// <param name="request">transaction information</param>
+        /// <returns>transaction created</returns>
         [HttpPost]
-        public async Task<ActionResult> Create([FromServices] CreateTransactionPresenter presenter, [FromBody] CreateTransactionApiModel request)
+        public async Task<ActionResult<TransactionApiModel>> Create([FromServices] CreateTransactionPresenter presenter,
+            [FromBody] CreateTransactionApiModel request)
         {
             var command = _mapper.Map<CreateTransactionCommand>(request);
 

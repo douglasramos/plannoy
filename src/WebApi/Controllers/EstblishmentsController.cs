@@ -11,7 +11,7 @@ using Plannoy.WebApi;
 using Plannoy.WebApi.ApiModel;
 using Plannoy.WebApi.Presenters;
 
-namespace WebApi.Controllers
+namespace Plannoy.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

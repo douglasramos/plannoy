@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Plannoy.Domain
+namespace Plannoy.Domain.Transaction
 {
     public class Money : ValueObject
     {

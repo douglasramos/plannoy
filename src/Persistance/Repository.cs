@@ -19,8 +19,8 @@ namespace Plannoy.Persistance
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             var entityEntry = await _dbContext.Set<TEntity>().AddAsync(entity);
-
             await _dbContext.SaveChangesAsync();
+
             return entityEntry.Entity;
         }
 

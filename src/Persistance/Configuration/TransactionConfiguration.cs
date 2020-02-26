@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Plannoy.Domain;
+using Plannoy.Domain.Transaction;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Persistance.Configuration
 {
     /// <summary>
-    /// Establishment Configuration.
+    /// Transaction Configuration.
     /// </summary>
     public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
     {

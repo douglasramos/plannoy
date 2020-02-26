@@ -1,4 +1,5 @@
 ﻿using Plannoy.Domain;
+using Plannoy.Domain.Transaction;
 using Plannoy.WebApi.CustomValidations;
 using System;
 using System.Collections.Generic;

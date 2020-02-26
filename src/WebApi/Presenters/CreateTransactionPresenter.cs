@@ -1,18 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Plannoy.Application.CreateTransaction;
-using Plannoy.Domain;
+using Plannoy.Domain.Transaction;
 using Plannoy.WebApi.ApiModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Plannoy.WebApi.Presenters
 {
     public class CreateTransactionPresenter : ICreateTransactionOutputPort
     {
-        public ActionResult Response { get; set; } = null!;
+        public ActionResult<TransactionApiModel> Response { get; set; } = null!;
 
         private readonly IMapper _mapper;
 

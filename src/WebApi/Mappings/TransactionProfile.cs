@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using Plannoy.Application.CreateEstablishment;
 using Plannoy.Application.CreateTransaction;
 using Plannoy.Application.GetTransactionsByFilter;
-using Plannoy.Domain;
-using Plannoy.WebApi;
+using Plannoy.Domain.Transaction;
 using Plannoy.WebApi.ApiModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApi.Mappings
 {

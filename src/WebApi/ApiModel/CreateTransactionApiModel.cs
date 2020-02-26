@@ -1,4 +1,5 @@
 ﻿using Plannoy.Domain;
+using Plannoy.Domain.Transaction;
 using Plannoy.WebApi.CustomValidations;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plannoy.WebApi
+namespace Plannoy.WebApi.ApiModel
 {
     public class CreateTransactionApiModel
     {
@@ -30,7 +31,7 @@ namespace Plannoy.WebApi
         public decimal Value { get; set; }
 
         /// <summary>
-        /// Currency use in the transaction
+        /// Currency used in the transaction
         /// </summary>
         [Required]
         public Currency Currency { get; set; }

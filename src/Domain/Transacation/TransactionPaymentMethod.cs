@@ -1,4 +1,4 @@
-namespace Plannoy.Domain
+namespace Plannoy.Domain.Transaction
 {
     public enum TransactionPaymentMethod
     {
