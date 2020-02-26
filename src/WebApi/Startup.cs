@@ -1,30 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using Persistance;
 using Plannoy.Application.CreateEstablishment;
-using Plannoy.Application.CreateTransaction;
-using Plannoy.Application.GetTransactionById;
-using Plannoy.Application.GetTransactionsByFilter;
-using Plannoy.Domain;
-using Plannoy.Persistance;
-using Plannoy.WebApi.Presenters;
+using Plannoy.WebApi.Extensions.WebApi.DependencyInjection;
 
 namespace Plannoy.WebApi
 {
@@ -42,6 +25,8 @@ namespace Plannoy.WebApi
         {
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddMediatR(typeof(CreateEstablishmentCommandHandler).Assembly);
+
             services.AddRouting(options => options.LowercaseUrls = true);
 
             services.AddControllers().AddJsonOptions(options =>
@@ -50,40 +35,11 @@ namespace Plannoy.WebApi
                 options.JsonSerializerOptions.IgnoreNullValues = true;
             });
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Plannoy API", Version = "v1" });
+            services.AddApiDocumentation();
 
-                // Set the comments path for the Swagger JSON and UI.
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });
+            services.AddDatabase();
 
-            services.AddMediatR(typeof(CreateEstablishmentCommandHandler).Assembly);
-
-            services.AddDbContext<PlannoyDbContext>(options => options.UseSqlite(@"Data Source=C:\Users\Douglas\Desktop\dbplannoy\plannoy.db"));
-
-            services.AddScoped<IEstablishmentRepository, EstablishmentRepository>();
-
-            services.AddScoped<ITransactionRepository, TransactionRepository>();
-
-            services.AddScoped<CreateEstablishmentPresenter>();
-            services.AddScoped<ICreateEstablishmentOutputPort>(c =>
-                c.GetRequiredService<CreateEstablishmentPresenter>());
-
-            services.AddScoped<CreateTransactionPresenter>();
-            services.AddScoped<ICreateTransactionOutputPort>(c =>
-                c.GetRequiredService<CreateTransactionPresenter>());
-
-            services.AddScoped<GetTransactionByIdPresenter>();
-            services.AddScoped<IGetTransactionByIdOutputPort>(c =>
-                c.GetRequiredService<GetTransactionByIdPresenter>());
-
-            services.AddScoped<GetTransactionByFilterPresenter>();
-            services.AddScoped<IGetTransactionsByFilterOutputPort>(c =>
-                c.GetRequiredService<GetTransactionByFilterPresenter>());
+            services.AddPresenters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,18 +55,7 @@ namespace Plannoy.WebApi
                 app.UseHttpsRedirection();
             }
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-
-                // makes swagger UI the api root
-                c.RoutePrefix = string.Empty;
-            });
+            app.UseApiDocumentation();
 
             app.UseRouting();
 

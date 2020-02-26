@@ -1,5 +1,5 @@
 ﻿using Plannoy.Domain;
-using Plannoy.WebApi.Properties.CustomValidations;
+using Plannoy.WebApi.CustomValidations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

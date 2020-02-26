@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plannoy.WebApi.Properties.CustomValidations
+namespace Plannoy.WebApi.CustomValidations
 {
     public class NotFutureDate : ValidationAttribute
     {
