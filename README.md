@@ -29,20 +29,21 @@ dotnet run --project src/WebApi
 You can test the endpoints using a rest API software of your choice or even via console through the **curl**. Example:
 
 ```bash
-curl https://localhost:5000/api/v1/transactions/
+curl https://localhost:5002/api/transactions/1
 ```
 
 ## Project Structure
 
 ```bash
 Plannoy src
-├── WebApi                    # endpoints for the rest api
+├── WebApi                    # endpoints for the rest api and configurations
 ├── Application               # UseCases project.
 ├── Domain                    # Module with all the business logic, entity (domain) models and its services
 ├── Persistance               # All persistance related stuff goes here.
 
 Plannoy tests
-├── WebApi.IntegrationTests   # Integrations tests using a client that makes real calls to the rest api
+├── WebApi.IntegrationTests   # Integrations tests using a client that makes real calls to the rest api [TODO]
+├── Application.UnitTests     # UnitTests for Application project [INCOMPLETE]
 ```
 
 ## Features
@@ -54,7 +55,7 @@ Plannoy tests
 
 ### Technology
 
-- WebApi monitoring with Prometheus
+- WebApi metrics for Prometheus - URL/metrics
 - Swagger Documentation
 
 ## Patterns and design principles
@@ -84,3 +85,4 @@ Plannoy tests
 - Code refactoring to generalize CRUD Logic operation
 - Fluent Validation instead of DataAnnotations
 - Domain Events
+- More UnitTests and Integration Tests

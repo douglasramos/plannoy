@@ -6,6 +6,8 @@ using Plannoy.Application.CreateEstablishment;
 using Plannoy.Application.CommonInterfaces;
 using System.Threading.Tasks;
 using AutoMapper;
+using Plannoy.Domain.Establishment;
+using Plannoy.Domain.RepositoryInterfaces;
 
 namespace Plannoy.Application.UnitTests
 {
@@ -24,7 +26,7 @@ namespace Plannoy.Application.UnitTests
                 establishmentRepo.AddAsync(Arg.Any<Establishment>()).Returns(new Establishment(name, sector) { Id = id });
 
                 var outputPort = Substitute.For<ICreateEstablishmentOutputPort>();
-                var command = new CreateEstablishmentCommand { Name = name, Sector = sector };
+                var command = new CreateEstablishmentCommand(name, sector);
 
                 var mapper = Substitute.For<IMapper>();
                 mapper.Map<Establishment>(command).Returns(new Establishment(name: name, sector: sector));
