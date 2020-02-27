@@ -2,56 +2,61 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Plannoy.Persistance;
 
-namespace Persistance.Migrations
+namespace Plannoy.Persistance.Migrations
 {
     [DbContext(typeof(PlannoyDbContext))]
-    [Migration("20200221015209_TransactionTable")]
-    partial class TransactionTable
+    [Migration("20200227014817_SqlServerMigration")]
+    partial class SqlServerMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1");
+                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Plannoy.Domain.Establishment", b =>
+            modelBuilder.Entity("Plannoy.Domain.Establishment.Establishment", b =>
                 {
                     b.Property<long?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Sector")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Establishment");
                 });
 
-            modelBuilder.Entity("Plannoy.Domain.Transaction", b =>
+            modelBuilder.Entity("Plannoy.Domain.Transaction.Transaction", b =>
                 {
                     b.Property<long?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("EstablishmentId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bigint");
 
                     b.Property<string>("PaymentMethod")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ReferenceDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -60,27 +65,29 @@ namespace Persistance.Migrations
                     b.ToTable("Transaction");
                 });
 
-            modelBuilder.Entity("Plannoy.Domain.Transaction", b =>
+            modelBuilder.Entity("Plannoy.Domain.Transaction.Transaction", b =>
                 {
-                    b.HasOne("Plannoy.Domain.Establishment", "Establishment")
+                    b.HasOne("Plannoy.Domain.Establishment.Establishment", "Establishment")
                         .WithMany("Transactions")
                         .HasForeignKey("EstablishmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Plannoy.Domain.Money", "Money", b1 =>
+                    b.OwnsOne("Plannoy.Domain.Transaction.Money", "Money", b1 =>
                         {
                             b1.Property<long>("TransactionId")
-                                .HasColumnType("INTEGER");
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b1.Property<int>("Currency")
+                            b1.Property<string>("Currency")
+                                .IsRequired()
                                 .HasColumnName("MoneyCurrency")
-                                .HasColumnType("INTEGER")
-                                .HasMaxLength(3);
+                                .HasColumnType("varchar(256)");
 
                             b1.Property<decimal>("Value")
                                 .HasColumnName("MoneyValue")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("decimal(18,4)");
 
                             b1.HasKey("TransactionId");
 

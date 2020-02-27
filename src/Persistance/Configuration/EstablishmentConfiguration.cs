@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Plannoy.Domain;
 using Plannoy.Domain.Establishment;
 
@@ -18,7 +19,8 @@ namespace Persistance.Configuration
             builder.ToTable("Establishment");
 
             builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
 
             // TODO set max length
             builder.Property(e => e.Name).IsRequired();

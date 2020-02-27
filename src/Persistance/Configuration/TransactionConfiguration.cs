@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Plannoy.Domain.Transaction;
 using System;
 
@@ -19,7 +20,8 @@ namespace Persistance.Configuration
 
             // TODO centralize this behavior on a base class
             builder.HasKey(t => t.Id);
-            builder.Property(t => t.Id).ValueGeneratedOnAdd();
+            builder.Property(t => t.Id)
+                .ValueGeneratedOnAdd();
 
             builder.Property(t => t.ReferenceDate)
                 .IsRequired()
@@ -38,7 +40,8 @@ namespace Persistance.Configuration
             {
                 m.Property(m => m.Value)
                 .HasColumnName("MoneyValue")
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("decimal(18,4)"); ;
 
                 m.Property(m => m.Currency)
                 .HasColumnName("MoneyCurrency")
@@ -46,7 +49,7 @@ namespace Persistance.Configuration
                     v => v.ToString(),
                     v => (Currency)Enum.Parse(typeof(Currency), v))
                 .IsRequired()
-                .HasMaxLength(3);
+                .HasColumnType("varchar(256)");
             });
 
             builder

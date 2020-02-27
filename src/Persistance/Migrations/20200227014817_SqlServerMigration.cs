@@ -1,23 +1,37 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Persistance.Migrations
+namespace Plannoy.Persistance.Migrations
 {
-    public partial class TransactionTable : Migration
+    public partial class SqlServerMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Establishment",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(256)", nullable: false),
+                    Sector = table.Column<string>(type: "varchar(256)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Establishment", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Transaction",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ReferenceDate = table.Column<DateTime>(nullable: false),
                     EstablishmentId = table.Column<long>(nullable: false),
                     PaymentMethod = table.Column<string>(nullable: false),
-                    MoneyValue = table.Column<decimal>(nullable: true),
-                    MoneyCurrency = table.Column<int>(maxLength: 3, nullable: true)
+                    MoneyValue = table.Column<decimal>(type: "decimal(18,4)", nullable: true),
+                    MoneyCurrency = table.Column<string>(type: "varchar(256)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,6 +54,9 @@ namespace Persistance.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Transaction");
+
+            migrationBuilder.DropTable(
+                name: "Establishment");
         }
     }
 }
